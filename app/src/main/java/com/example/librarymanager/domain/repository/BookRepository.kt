@@ -8,5 +8,5 @@ interface BookRepository {
     fun searchBooks(query: String): Flow<List<Book>>
     fun getAvailableBooks(): Flow<List<Book>>
     suspend fun getBookById(bookId: String): Book?
-    suspend fun syncBooks(): Result<Unit>
+    fun syncBooks(): Result<Unit>
 }

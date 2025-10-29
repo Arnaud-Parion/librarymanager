@@ -67,7 +67,7 @@ object AppModule {
     @Provides
     fun provideRetrofit(httpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.1.100:8080/") // Change to your API base URL
+            .baseUrl("https://openlibrary.org/") // Change to your API base URL
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

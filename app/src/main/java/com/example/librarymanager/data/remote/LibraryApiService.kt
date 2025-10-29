@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 data class BookDto(
     val id: String,
@@ -34,7 +35,31 @@ data class LoanDto(
     val returnDate: Long? = null
 )
 
+data class OpenLibrarySearchResponse(
+    val numFound: Int,
+    val start: Int?,
+    val numFoundExact: Boolean?,
+    val docs: List<BookDoc>,
+)
+
+data class BookDoc(
+    val key: String?,
+    val title: String?,
+    val author_name: List<String>?,
+    val first_publish_year: Int?,
+    val cover_i: Int?,
+    val language: List<String>?,
+    val edition_count: Int?
+)
+
+
 interface LibraryApiService {
+    @GET("search.json")
+    suspend fun searchBooks(
+        @Query("q") query: String = "happy",
+        @Query("page") page: Int,
+        @Query("limit") limit: Int = 20
+    ): OpenLibrarySearchResponse
     // Books
     @GET("api/books")
     suspend fun getAllBooks(): List<BookDto>
