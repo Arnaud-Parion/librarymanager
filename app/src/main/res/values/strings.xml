@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Library Manager</string>
+    <string name="loans">Loans</string>
+    <string name="clients">Clients</string>
+    <string name="books">Books</string>
+    <string name="active_loans">Active Loans</string>
+    <string name="search_clients">Search clients...</string>
+    <string name="search_books">Search books...</string>
+    <string name="no_loans">No active loans</string>
+    <string name="no_clients">No clients found</string>
+    <string name="no_books">No books found</string>
+    <string name="mark_as_returned">Mark as Returned</string>
+    <string name="due">Due</string>
+    <string name="available">Available</string>
+    <string name="refresh">Refresh</string>
+</resources>
