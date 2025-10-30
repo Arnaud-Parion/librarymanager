@@ -56,9 +56,9 @@ data class BookDoc(
 interface LibraryApiService {
     @GET("search.json")
     suspend fun searchBooks(
-        @Query("q") query: String = "happy",
+        @Query("q") query: String = "abcdef",
         @Query("page") page: Int,
-        @Query("limit") limit: Int = 20
+        @Query("limit") limit: Int,
     ): OpenLibrarySearchResponse
     // Books
     @GET("api/books")

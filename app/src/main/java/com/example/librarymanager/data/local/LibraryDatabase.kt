@@ -11,7 +11,7 @@ import com.example.librarymanager.data.local.entities.LoanEntity
 
 @Database(
     entities = [BookEntity::class, ClientEntity::class, LoanEntity::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class LibraryDatabase : RoomDatabase() {

@@ -47,7 +47,7 @@ class BookRepositoryImpl @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch {
             bookDao.deleteAllBooks()
             var page = 1
-            val pageSize = 20
+            val pageSize = 10
             do {
                 val entities = apiService.searchBooks(page = page, limit = pageSize)
                     .docs.map { BookEntity(

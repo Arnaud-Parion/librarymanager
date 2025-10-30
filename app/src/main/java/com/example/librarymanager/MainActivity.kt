@@ -1,8 +1,11 @@
 package com.example.librarymanager
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -13,38 +16,39 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.librarymanager.data.sync.SyncManager
 import com.example.librarymanager.ui.navigation.NavGraph
 import com.example.librarymanager.ui.navigation.NavigationRoute
+import com.example.librarymanager.ui.screens.LoginScreen
 import com.example.librarymanager.ui.theme.LibraryManagerTheme
+import com.example.librarymanager.ui.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var syncManager: SyncManager
+    private val authViewModel: AuthViewModel by viewModels()
+
+    private var isLoggedIn by mutableStateOf(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
-        // Schedule background sync
-        syncManager.scheduleSyncWork()
-
         setContent {
-            LibraryManagerTheme {
+            if (isLoggedIn) {
                 MainScreen()
+            } else {
+                LoginScreen(
+                    onLoginSuccess = { isLoggedIn = true },
+                    authViewModel = authViewModel
+                )
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        syncManager.cancelSyncWork()
     }
 }
 

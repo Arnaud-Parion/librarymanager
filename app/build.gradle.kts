@@ -18,6 +18,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders["appAuthRedirectScheme"] = "com.example.librarymanager"
     }
 
     buildTypes {
@@ -87,4 +89,7 @@ dependencies {
     // Paging 3
     implementation("androidx.paging:paging-compose:3.3.6")
     implementation("androidx.paging:paging-runtime-ktx:3.3.6")
+
+    // AppAuth
+    implementation("net.openid:appauth:0.11.1")
 }
