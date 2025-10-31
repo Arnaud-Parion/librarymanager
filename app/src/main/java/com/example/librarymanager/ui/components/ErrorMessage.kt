@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -35,12 +33,5 @@ fun ErrorMessage(
             color = MaterialTheme.colorScheme.onErrorContainer,
             modifier = Modifier.weight(1f)
         )
-        IconButton(onClick = onDismiss) {
-            Icon(
-                imageVector = Icons.Default.Close,
-                contentDescription = "Dismiss error",
-                tint = MaterialTheme.colorScheme.onErrorContainer
-            )
-        }
     }
 }
